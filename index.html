@@ -23,7 +23,7 @@
       max-width: 100%;
     }
     nav {
-      background-color: #333;
+      background-color: blue;
       padding: 8px;
       text-align: center;
     }
@@ -39,7 +39,6 @@
     }
 
     .controls {
-      display: flex;
       flex-wrap: wrap;
       gap: 10px;
       background: #fff;
@@ -70,6 +69,7 @@
       overflow-y: auto;
     }
     .thumbnail {
+      float: left;
       cursor: pointer;
       margin-bottom: 10px;
       border: 1px solid black;
@@ -186,7 +186,7 @@
 
     function renderPage(num) {
       pdfDoc.getPage(num).then(page => {
-        let viewport = page.getViewport({ scale: 1 });
+        let viewport = page.getViewport({ scale: 1.5 });
         let scale = canvas.parentElement.clientWidth / viewport.width;
         viewport = page.getViewport({ scale });
 

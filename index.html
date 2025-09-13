@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NC NEWS - E-Paper</title>
   <style>
     body {
@@ -36,7 +36,9 @@
     }
 
     .controls {
-      flex-wrap: wrap;
+     display: flex;
+     justify-content: space-between;
+     flex-wrap: wrap;
       gap: 10px;
       background: #fff;
       padding: 10px;
@@ -52,6 +54,10 @@
 
     .container {
       display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: auto;
+      margin-right: auto;
       flex: 1;
       overflow: hidden;
     }
@@ -60,11 +66,23 @@
     #sidebar {
       width: 180px;
       background: #fafafa;
+      overflow-y: auto;
       padding: 10px;
       border-right: 1px solid #ccc;
-      overflow-y: auto;
+      
+    }
+     #sidebar img {
+      width: 100%;
+      margin-bottom: 10px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: 0.3s;
+    }
+    #sidebar img:hover {
+      border: 2px solid #d32f2f;
     }
     .thumbnail {
+      position: relative;
       float: left;
       cursor: pointer;
       margin-bottom: 10px;
@@ -79,7 +97,9 @@
       overflow: auto;
       text-align: center;
       background: #ddd;
-      padding: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
     }
     canvas {
       width: 100%;
@@ -127,6 +147,13 @@
     @media (max-width: 768px) {
       .container {
         flex-direction: column;
+        display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: auto;
+      margin-right: auto;
+      flex: 1;
+      overflow: hidden;
       }
       #sidebar {
         width: 100%;

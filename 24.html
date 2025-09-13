@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
     <head>
@@ -45,4 +46,53 @@
   </script>
   </body>
   
+=======
+<!DOCTYPE html>
+<html>
+    <head>
+      <style>
+      select, input[type="date"] {
+      background-color: #333;
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #aaa;
+      font-size: 16px;
+    
+      color: white;
+      margin: 20px;
+    }
+          .preview {
+      text-align: center;
+    }
+    .preview img {
+      width: 100%;
+      max-width: 800px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+        
+      </style>
+
+    </head>
+    <body>
+  <select id="image" onchange="showImage(this)">
+
+    <option value="page 1.jpg">page 1</option>
+    <option value="page 2.jpg">page 2</option>
+    <option value="page 3.jpg">page 3</option>
+    <option value="page 4.jpg">page 4</option>
+  </select>
+
+  <div class="preview">
+    <img id="Image" src="page 1.jpg" alt=" sorry">
+  </div>
+
+  <script>
+    function showImage(select) {
+      document.getElementById('Image').src = select.value;
+    }
+  </script>
+  </body>
+  
+>>>>>>> adc2e93c76ab335a99bb723ca2f00f2ff4876f16
   </html>

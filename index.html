@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NC NEWS - E-Paper</title>
   <style>
-  body {
+    body {
       font-family: Arial, sans-serif;
       margin: 0;
       background: #f4f4f4;
@@ -19,64 +19,65 @@
       text-align: center;
     }
     header img {
-      height: 70px;
+      height: 60px;
       max-width: 100%;
-      padding-bottom: 0%;
     }
     nav {
       background-color: #333;
-      padding: 10px;
+      padding: 8px;
       text-align: center;
     }
     nav a {
       color: white;
       text-decoration: none;
-      margin: 0 10px;
+      margin: 0 8px;
       font-weight: bold;
+      font-size: 14px;
     }
     nav a:hover {
       color: yellowgreen;
     }
-    .container {
-      display: flex;
-      flex: 1;
-      flex-wrap: wrap; /* ✅ Helps for small screens */
-    }
+
     .controls {
-      width: 100%;
       display: flex;
-      justify-content: space-between;
       flex-wrap: wrap;
+      gap: 10px;
       background: #fff;
       padding: 10px;
       border-bottom: 1px solid #ccc;
     }
     select, input[type="date"] {
+      flex: 1;
+      min-width: 140px;
       padding: 8px;
       border-radius: 5px;
       border: 1px solid #aaa;
       font-size: 14px;
-      margin: 5px;
-      flex: 1;
-      min-width: 150px;
     }
-    /* Sidebar for page previews */
+
+    .container {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    /* Sidebar */
     #sidebar {
-      position: relative;
-      float: left;
-      width: 200px;
+      width: 180px;
       background: #fafafa;
-      overflow-x: auto;
       padding: 10px;
       border-right: 1px solid #ccc;
+      overflow-y: auto;
     }
     .thumbnail {
       cursor: pointer;
       margin-bottom: 10px;
       border: 1px solid black;
       display: block;
+      width: 100%;
     }
-    /* Main viewer */
+
+    /* Viewer */
     #viewer {
       flex: 1;
       overflow: auto;
@@ -85,40 +86,48 @@
       padding: 10px;
     }
     canvas {
-     
-      max-width: 100%;   /* ✅ Auto fit to screen */
+      width: 100%;
       height: auto;
+      max-width: 100%;
     }
+
+    /* Share buttons */
     .share-buttons {
-       margin: 20px auto;
+      margin: 15px auto;
       text-align: center;
+      display: flex;
       flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
     }
-    .share-buttons button,
-    .share-buttons a {
-      display: inline-block;
-      margin: 8px;
-      padding: 10px 15px;
+    .share-buttons a,
+    .share-buttons button {
+      flex: 1 1 120px;
+      max-width: 150px;
+      padding: 10px;
       border: none;
-      border-radius: 8px;
-      cursor: pointer;
+      border-radius: 6px;
       color: white;
       font-size: 14px;
+      cursor: pointer;
       text-decoration: none;
+      text-align: center;
     }
     .whatsapp { background: #25D366; }
     .facebook { background: #1877F2; }
     .twitter { background: #1DA1F2; }
     .copy { background: #444; }
     .native { background: #ff5722; }
+
     footer {
       background: #333;
       color: white;
       text-align: center;
       padding: 10px;
-      font-size: 14px;
+      font-size: 13px;
     }
-    /* ✅ Responsive styles */
+
+    /* ✅ Mobile adjustments */
     @media (max-width: 768px) {
       .container {
         flex-direction: column;
@@ -132,20 +141,18 @@
       }
       #sidebar div {
         flex: 0 0 auto;
-        margin-right: 10px;
+        margin-right: 8px;
       }
       .controls {
         flex-direction: column;
-        align-items: flex-start;
       }
     }
-      </style>
+  </style>
 </head>
 <body>
 
-   <header>
+  <header>
     <img src="hii.jpg" alt="NC News Logo">
-
   </header>
 
   <nav>
@@ -155,14 +162,10 @@
   </nav>
 
   <div class="controls">
-    <div>
-      <label><b>Select Date:</b></label>
-      <input type="date" id="datePicker" onchange="openDate(this)">
-    </div>
-    <div>
-      <label><b>Select Page:</b></label>
-      <select id="pageSelect"></select>
-    </div>
+    <label><b>Select Date:</b></label>
+    <input type="date" id="datePicker" onchange="openDate(this)">
+    <label><b>Select Page:</b></label>
+    <select id="pageSelect"></select>
   </div>
 
   <div class="container">
@@ -175,7 +178,7 @@
   <!-- PDF.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
   <script>
-    const url = "page 1.pdf"; // Replace with your PDF file
+    const url = "page 1.pdf";
     let pdfDoc = null,
         pageNum = 1,
         canvas = document.getElementById('pdf-render'),
@@ -184,17 +187,13 @@
     function renderPage(num) {
       pdfDoc.getPage(num).then(page => {
         let viewport = page.getViewport({ scale: 1 });
-        // ✅ Fit width dynamically
-        let scale = (canvas.parentElement.clientWidth - 20) / viewport.width;
+        let scale = canvas.parentElement.clientWidth / viewport.width;
         viewport = page.getViewport({ scale });
 
         canvas.height = viewport.height;
         canvas.width = viewport.width;
 
-        let renderCtx = {
-          canvasContext: ctx,
-          viewport: viewport
-        };
+        let renderCtx = { canvasContext: ctx, viewport };
         page.render(renderCtx);
       });
     }
@@ -210,15 +209,14 @@
           canvasThumb.height = viewport.height;
           canvasThumb.width = viewport.width;
 
-          page.render({ canvasContext: ctxThumb, viewport: viewport });
+          page.render({ canvasContext: ctxThumb, viewport });
 
           let wrapper = document.createElement("div");
           wrapper.appendChild(canvasThumb);
 
           let label = document.createElement("div");
           label.textContent = "Page " + i;
-          label.style.fontSize = "14px";
-          label.style.color = "#333";
+          label.style.fontSize = "12px";
           wrapper.appendChild(label);
 
           sidebar.appendChild(wrapper);
@@ -253,9 +251,7 @@
       createPageSelector();
     });
 
-     window.addEventListener("resize", () => {
-      renderPage(pageNum);
-    });
+    window.addEventListener("resize", () => renderPage(pageNum));
 
     function openDate(input) {
       let date = input.value;

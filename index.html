@@ -42,13 +42,7 @@
       padding: 5px;
       border-bottom: 1px solid #ccc;
     }
-     .page{
-      left: 0;
-      width: 100%;
-      background: #fff;
-      padding: 5px;
-      border-bottom: 1px solid #ccc;
-     }
+     
     select, input[type="date"] {
       margin: 5px;
       padding: 8px;
@@ -114,22 +108,26 @@
 
     /* Share buttons */
     .share-buttons {
-  position: fixed;
+      width: 100%;
+      background: #fff
+      border-bottom: 1px solid #ccc;  
+       display: flex;
+      justify-content: center; /* Centers content horizontally */
+      align-items: center; /* Centers content vertically if element has height */
+  /* Add other styles like background-color, padding, etc. */
+}
+ .page{
+   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%; /* Ensures it spans the full width of the viewport */
-  display: flex;
-  justify-content: center; /* Centers content horizontally */
-  align-items: center; /* Centers content vertically if element has height */
-  /* Add other styles like background-color, padding, etc. */
   background-color: snow;
-  padding: 10px;
-}
+     }
     .share-buttons a,
     .share-buttons button {
       max-width: 150px;
-      padding: 10px;
       border: none;
+      margin: 5px;
       border-radius: 6px;
       color: white;
       font-size: 14px;
@@ -159,7 +157,9 @@
     }
     .fa-file-pdf{
       float: right;
-      color: red;
+      bottom: 0;
+       right: 0;
+       padding-top: 5px;
       font-size: 24px;
     }
 
@@ -207,14 +207,17 @@
     <a href="contact.html">Contact</a>
   </nav>
 
-  <div class="controls">
-    <input type="date" id="datePicker" onchange="openDate(this)">
+  
     
   </div>
-  <div class="page">
-    <select id="pageSelect"></select>
-    <a href="page 1.pdf"  download class="pdf" ><i class="fa-solid fa-file-pdf"></i></a>
+   <div class="share-buttons">
+    <a class="whatsapp" href="https://api.whatsapp.com/send?text=Check%20NC%20NEWS!%20https://kowsik0903.github.io/ncnews/" target="_blank"><i class="fa-brands fa-square-whatsapp"></i></a>
+    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://kowsik0903.github.io/ncnews/" target="_blank"><i class="fa-brands fa-square-facebook"></i></a>
+    <a class="twitter" href="https://twitter.com/intent/tweet?url=https://kowsik0903.github.io/ncnews/&text=Check+this+NC NEWS!" target="_blank"><i class="fa-brands fa-square-twitter"></i></a>
+    <a class="copy" onclick="copyLink()"><i class="fa-solid fa-link"></i></a>
+    <a class="native" onclick="sharePage()"><i class="fa-solid fa-square-share-nodes"></i></a>
   </div>
+  
 
   <div class="container">
     <div id="sidebar"></div>
@@ -325,15 +328,14 @@
       }
     }
   </script>
-
-
-  <div class="share-buttons">
-    <a class="whatsapp" href="https://api.whatsapp.com/send?text=Check%20NC%20NEWS!%20https://kowsik0903.github.io/ncnews/" target="_blank"><i class="fa-brands fa-square-whatsapp"></i></a>
-    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://kowsik0903.github.io/ncnews/" target="_blank"><i class="fa-brands fa-square-facebook"></i></a>
-    <a class="twitter" href="https://twitter.com/intent/tweet?url=https://kowsik0903.github.io/ncnews/&text=Check+this+NC NEWS!" target="_blank"><i class="fa-brands fa-square-twitter"></i></a>
-    <button class="copy" onclick="copyLink()"><i class="fa-solid fa-link"></i></button>
-    <button class="native" onclick="sharePage()"><i class="fa-solid fa-square-share-nodes"></i></button>
+  <div class="page">
+    <select id="pageSelect"></select>
+    <a href="page 1.pdf"  download class="pdf" ><i class="fa-solid fa-file-pdf"></i></a>
+    <input type="date" id="datePicker" onchange="openDate(this)">
   </div>
+
+
+ 
 
   <footer>
     <p>&copy; 2025 NC NEWS. All Rights Reserved.</p>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendar Icon Input</title>
+  <style>
+    .calendar-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    /* Hide the default date input */
+    .calendar-container input[type="date"] {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 40px;
+      height: 40px;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    /* Calendar icon styling */
+    .calendar-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #007BFF;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    .calendar-icon:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="calendar-container">
+    <!-- Hidden date input -->
+    <input type="date" id="datePicker">
+
+    <!-- Calendar icon (Font Awesome or Unicode) -->
+    <div class="calendar-icon">📅</div>
+  </div>
+
+  <script>
+    const dateInput = document.getElementById("datePicker");
+    const selectedDate = document.getElementById("selectedDate");
+
+    // Show selected date
+    dateInput.addEventListener("change", () => {
+      selectedDate.textContent = dateInput.value;
+    });
+  </script>
+
+</body>
+</html>

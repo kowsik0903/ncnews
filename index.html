@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>NC NEWS - E-Paper</title>
   <style>
     body {
@@ -109,16 +110,20 @@
 
     /* Share buttons */
     .share-buttons {
-      margin: 15px auto;
-      text-align: center;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-    }
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%; /* Ensures it spans the full width of the viewport */
+  display: flex;
+  justify-content: center; /* Centers content horizontally */
+  align-items: center; /* Centers content vertically if element has height */
+  /* Add other styles like background-color, padding, etc. */
+  background-color: snow;
+  padding: 10px;
+}
     .share-buttons a,
     .share-buttons button {
-      flex: 1 1 120px;
+      flex:1;
       max-width: 150px;
       padding: 10px;
       border: none;
@@ -129,11 +134,26 @@
       text-decoration: none;
       text-align: center;
     }
-    .whatsapp { background: #25D366; }
-    .facebook { background: #1877F2; }
-    .twitter { background: #1DA1F2; }
-    .copy { background: #444; }
-    .native { background: #ff5722; }
+    .fa-square-whatsapp{
+      color: green;
+      font-size: 70px;
+    }
+    .fa-square-facebook{
+      color: blue;
+      font-size: 70px;
+    }
+    .fa-square-twitter{
+      color:deepskyblue;
+      font-size: 70px;
+    }
+    .fa-link{
+      color: #333;
+      font-size: 70px;
+    }
+    .fa-square-share-nodes{
+      color: #333;
+      font-size: 70px;
+    }
 
     footer {
       background: #333;
@@ -147,11 +167,6 @@
     @media (max-width: 768px) {
       .container {
         flex-direction: column;
-        display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-left: auto;
-      margin-right: auto;
       flex: 1;
       overflow: hidden;
       }
@@ -301,12 +316,13 @@
     }
   </script>
 
+
   <div class="share-buttons">
-    <a class="whatsapp" href="https://api.whatsapp.com/send?text=Check%20NC%20NEWS!%20https://kowsik0903.github.io/ncnews/" target="_blank">WhatsApp</a>
-    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://kowsik0903.github.io/ncnews/" target="_blank">Facebook</a>
-    <a class="twitter" href="https://twitter.com/intent/tweet?url=https://kowsik0903.github.io/ncnews/&text=Check+this+NC NEWS!" target="_blank">Twitter</a>
-    <button class="copy" onclick="copyLink()">Copy Link</button>
-    <button class="native" onclick="sharePage()">📱 Share</button>
+    <a class="whatsapp" href="https://api.whatsapp.com/send?text=Check%20NC%20NEWS!%20https://kowsik0903.github.io/ncnews/" target="_blank"><i class="fa-brands fa-square-whatsapp"></i></a>
+    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://kowsik0903.github.io/ncnews/" target="_blank"><i class="fa-brands fa-square-facebook"></i></a>
+    <a class="twitter" href="https://twitter.com/intent/tweet?url=https://kowsik0903.github.io/ncnews/&text=Check+this+NC NEWS!" target="_blank"><i class="fa-brands fa-square-twitter"></i></a>
+    <button class="copy" onclick="copyLink()"><i class="fa-solid fa-link"></i></button>
+    <button class="native" onclick="sharePage()"><i class="fa-solid fa-square-share-nodes"></i></button>
   </div>
 
   <footer>
